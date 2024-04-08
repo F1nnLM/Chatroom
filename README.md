@@ -1,2 +1,2 @@
 # Bluetooth_chat
-A bluetooth based chatroom system 
+A chatroom both ip and bluetooth based 
