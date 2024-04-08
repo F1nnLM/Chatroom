@@ -124,7 +124,7 @@ if config == "ip":
 
 elif (config == "bluetooth") or (config == "bt"):
     server_sock = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
-    server_address = ':'.join(['{:02x}'.format((uuid.getnode() >> elements) & 0xff) for elements in range(0,2*6,2)][::-1])
+    server_address = "40:a3:cc:7e:f7:1a"#':'.join(['{:02x}'.format((uuid.getnode() >> elements) & 0xff) for elements in range(0,2*6,2)][::-1])
     port = 4
     print(f"{Style.DIM}Server address: {server_address}") 
 
