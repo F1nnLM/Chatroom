@@ -1,7 +1,6 @@
 import socket
 import threading
 import colorama
-import uuid
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 
@@ -58,7 +57,7 @@ def write():
         user_input = input("")
         if user_input != "":
             if user_input[0] == "/":
-                commands_manger(user_input)
+                commands_manager(user_input)
             else:
                 message = f"{Fore.CYAN}{Style.BRIGHT}(host){Style.NORMAL}{Fore.LIGHTBLUE_EX} {server_nickname}: {Fore.RESET}{user_input}".encode("utf-8")
                 broadcast(message)
@@ -66,7 +65,7 @@ def write():
             print(f"{Style.DIM}You can't send empty messages")
 
 
-def commands_manger(command):
+def commands_manager(command):
     parts = command.split(" ")
     command = parts[0][1:]
     if command == "help":
@@ -80,8 +79,8 @@ def commands_manger(command):
                 print(f"{Style.DIM}You can't kick yourself")
         else:
             print(f"{Style.DIM}Target missing")
-    elif command == "address":
-        print(f"{Style.DIM}Server MAC address: {server_address}")
+    elif command == "list":
+        print(nicknames)
     else:
         print(f"{Style.DIM}Invalid command type /help for a list of commands")
     
@@ -120,13 +119,12 @@ if config == "ip":
             break
         except:
            print("Enter a valid number")
-    print(f"{Style.DIM}Server address is {server_address}") 
 
 elif (config == "bluetooth") or (config == "bt"):
     server_sock = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
-    server_address = "40:a3:cc:7e:f7:1a"#':'.join(['{:02x}'.format((uuid.getnode() >> elements) & 0xff) for elements in range(0,2*6,2)][::-1])
+    server_address = input("Enter your divice MAC address: ")
     port = 4
-    print(f"{Style.DIM}Server address: {server_address}") 
+
 
 clients = []
 nicknames = []
