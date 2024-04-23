@@ -98,9 +98,9 @@ def kick(nickname):
 
 def help_c():
     print(f'''{Style.DIM}Commands:
-/help - Display this message
-/kick [nickname] - Kick a user from the chat                
-/list - List all the users in the chat''')   
+- /help - Displays this message;
+- /kick [nickname] - Kick a user from the chat;                
+- /list - List of all connected users.''')   
 
 
 #main
